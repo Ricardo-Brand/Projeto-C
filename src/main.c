@@ -5,7 +5,7 @@
 
 int main(){
     int a, b, total;
-    double c, t;
+    double c, t, a1, b1;
     char operador[3];
 
     strcpy(operador, ""); 
@@ -53,14 +53,14 @@ int main(){
     else if (strcmp(operador, "/") == 0) {
         printf("\nO formato dessa conta sera: 'a / b' \n");
         printf("Digite o valor de 'a': ");
-        scanf("%d", &a);
+        scanf("%lf", &a1);
         printf("\nDigite o valor de 'b': ");
-        scanf("%d", &b);
-        if(b == 0){
+        scanf("%lf", &b1);
+        if(b1 == 0){
             printf("Conta matematica invalida, pois o divisor eh igual a 0\n");
-            return 0;
+            return 1;
         }
-        t = divi(a,b);
+        t = divi(a1,b1);
         printf("\nTotal: %.2lf\n", t);
 
     } 
@@ -69,7 +69,6 @@ int main(){
         printf("Digite o valor de 'a': ");
         scanf("%d", &a);
         c = (double)a;
-        raiz(c);
         t = raiz(c);
         printf("\nTotal: %.2lf\n", t);
 
