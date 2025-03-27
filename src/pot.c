@@ -4,7 +4,6 @@ double pot(double base, int expoente) {
 	int const mask = expoente >> sizeof(int) * 8 - 1;
 
 	exp = (expoente + mask) ^ mask;
-
 	double resultado = 1.0;
 
 	while (exp) {
