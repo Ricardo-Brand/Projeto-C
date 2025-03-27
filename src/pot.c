@@ -1,50 +1,21 @@
-#include <math.h>
-#include <stdlib.h>
+double pot(double base, int expoente) {
+	// referencia: https://graphics.stanford.edu/~seander/bithacks.html#IntegerAbs
+	unsigned int exp;
+	int const mask = expoente >> sizeof(int) * 8 - 1;
 
-double pot(int base, int expoente) {
-	int verificar_bin, exp_bin;
-	double resultado;
+	exp = (expoente + mask) ^ mask;
 
-	exp_bin = 0;
-	verificar_bin = abs(expoente);
-	resultado = 1.0;
+	double resultado = 1.0;
 
-	if (expoente == 0) {
-		return 1;
-	}
-	if (base == 0) {
-		return 0;
-	}
-	if (expoente > 0 || base < 0) {
-		for (int i = 0, j = 1; i < 32; i++, j *= 2) {
-			if (expoente & (1 << i)) {
-				while (exp_bin < j) {
-					resultado = fabs(resultado * base);
-					exp_bin++;
-				}
-				exp_bin = 0;
-			}
-			if (verificar_bin <= 1) {
-				break;
-			}
-			verificar_bin = verificar_bin / 2;
+	while (exp) {
+		if (exp & 1) {
+			resultado *= base;
 		}
-	} else {
-		expoente = abs(expoente);
-		for (int i = 0, j = 1; i < 32; i++, j *= 2) {
-			if (expoente & (1 << i)) {
-				while (exp_bin < j) {
-					resultado = fabs(resultado / base);
-					exp_bin++;
-				}
-				exp_bin = 0;
-			}
-			if (verificar_bin <= 1) {
-				break;
-			}
-			verificar_bin = verificar_bin / 2;
-		}
+		exp /= 2;
+		base *= base;
 	}
-
+	if (expoente < 0) {
+		return 1.0 / resultado;
+	}
 	return resultado;
 }
