@@ -1,4 +1,4 @@
-.PHONY: exec clean
+.PHONY: exec clean format
 
 #obj = build/add.o build/sub.o build/mul.o build/divi.o build/pot.o build/sqr.o
 SRCS = $(filter-out src/main.c, $(wildcard src/*.c))
@@ -18,3 +18,6 @@ exec: build/main
 
 clean: build
 	rm -f ./build/*
+
+format: 
+	clang-format -i ./src/*
