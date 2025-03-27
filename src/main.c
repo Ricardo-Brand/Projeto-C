@@ -79,6 +79,10 @@ int main(){
         scanf("%d", &a);
         printf("\nDigite o valor de 'b': ");
         scanf("%d", &b);
+        if(b < 0 ){
+            printf("Apenas expoentes positivos são permitidos!!!\n");
+                return 1;
+        }
         total = pot(a,b);
         printf("\nTotal: %d\n", total);
 
