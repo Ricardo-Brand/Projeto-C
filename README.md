@@ -53,7 +53,7 @@ Segundo os exercícios presentes, você pode encontrar programas que:
 **1 - Clone o repositório:**
 
 ```bash
-git clone https://github.com/Ricardo-Brand/Projeto-C.git
+git clone git@github.com:Ricardo-Brand/Projeto-C.git
 
 ```
 
